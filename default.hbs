@@ -97,5 +97,48 @@
         }());
       }
     </script>
+
+    {{! load and configure mathjax }}
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)']
+          ]
+        }
+      });
+    </script>
+    {{! re-render mathjax in live preview }}
+  <script>
+    var timeout;
+    var entry = document.detElementsByClassName('entry-markdown')[0];
+    function mathjaxify() {
+      var preview = document.getElementsByClassName('rendered-markdown')[0];
+      if (typeof(typeset) == 'undefined' || typeset == true){
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, preview]);
+        typesetStubbornMath();
+      }
+      function typesetStubbornMath(){
+        $('.MathJax_Preview').each(function(){
+          if($(this).text() != ''){
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub, $(this).attr('id')]);
+          }
+        });
+      }
+    }
+    if(entry){
+      jQuery(document).keypress(function(event){
+        clearTimeout(timeout);
+        timeout = setTimeout(mathjaxify, 2001);
+      });
+    }
+    setTimeout(function(){
+      jQuery('.content-list-content li').click(function() {
+        mathjaxify();
+      });
+    }, 500);
+  </script>
   </body>
 </html>
