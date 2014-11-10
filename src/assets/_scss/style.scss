@@ -53,3 +53,13 @@
 
 // External
 @import "vendor/_gist.scss";
+
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: Triplicate, "Source Code Pro", Courier, "Courier New", monospace;
+}
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  background: hsla(0, 0%, 100%, 0);
+}

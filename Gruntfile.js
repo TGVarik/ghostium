@@ -355,7 +355,7 @@ module.exports = function(grunt) {
       options: {
         github: 'oswaldoacauan/ghostium'
       }
-    },
+    }
   });
 
   /**

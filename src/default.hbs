@@ -159,7 +159,7 @@
 {{! re-render mathjax in live preview }}
 <script>
   var timeout;
-  var entry = document.detElementsByClassName('entry-markdown')[0];
+  var entry = document.getElementsByClassName('entry-markdown')[0];
   function mathjaxify() {
     var preview = document.getElementsByClassName('rendered-markdown')[0];
     if(typeof(typeset) == 'undefined' || typeset == true) {
