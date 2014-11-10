@@ -440,6 +440,6 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('default', [
     'build',
-    'report'
+    'copy:release'
   ]);
 };

@@ -31,9 +31,15 @@
     var _prismHandler = function() {
       $('code').not('[class*="language-"]').addClass(function() {
         var _lang = $(this).attr('class')  || 'markup';
-
         _lang = _lang.replace(/(language|lang)+\-/gi, '');
         return 'language-' + (Prism.languages.hasOwnProperty(_lang) ? _lang : 'markup');
+      });
+
+      $('code.line-numbers').each(function(idx, el){
+        var $el = $(el);
+        $el.text($el.text().replace(/^\s+|\s+$/g, ''));
+        $el.removeClass('line-numbers');
+        $el.parent('pre').addClass('line-numbers');
       });
 
       Prism.highlightAll();
