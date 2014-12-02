@@ -18,7 +18,7 @@
 
     // FastClick bindings
     // =================
-    FastClick.attach(document.body);
+    //FastClick.attach(document.body);
 
     // Drawer bindings
     // =================
@@ -106,6 +106,17 @@
       }
     };
 
+    // Pentagonal Handler
+    // =================
+    var _pentagonalHandler = function(){
+      if ($('.cover').length > 0) {
+        while ($('.pentagonal').length === 0) {
+          pentagonal($('.cover-image')[0]);
+        }
+      }
+    };
+
+    $(_pentagonalHandler);
     // PJax bindings
     // =================
     if ($.support.pjax && GHOSTIUM.enablePjax) {
@@ -122,6 +133,7 @@
         $('[data-load-image]', $content).each(function() {
           ImageLoader.load($(this));
         });
+        $(_pentagonalHandler);
       });
 
       var _pjaxOptions = {

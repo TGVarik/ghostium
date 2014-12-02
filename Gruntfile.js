@@ -139,6 +139,8 @@ module.exports = function(grunt) {
       options: {
         stripBanners: true,
         nonull: true,
+        sourceMap: true,
+        sourceMapStyle: 'inline',
         banner: '<%= tag.banner %>'
       }
     },
@@ -150,7 +152,9 @@ module.exports = function(grunt) {
      */
     uglify: {
       options: {
-        banner: '<%= tag.banner %>'
+        banner: '<%= tag.banner %>',
+        sourceMap: true,
+        sourceMapIncludeSources: true
       }
     },
 

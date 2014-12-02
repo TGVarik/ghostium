@@ -173,6 +173,7 @@ var pentagonal = function(container) {
     var animate = function () {
       requestAnimationFrame(animate);
       var delta = clock.getDelta();
+      watchdog.getDelta();
       ph.rotation.x += 0.05 * delta;
       ph.rotation.y += 0.03 * delta;
       ph.rotation.z -= 0.02 * delta;
@@ -181,8 +182,9 @@ var pentagonal = function(container) {
     };
     var scale = 675;
     var clock = new THREE.Clock();
-    var w = container.innerWidth;
-    var h = container.innerHeight;
+    var watchdog = new THREE.Clock();
+    var w = container.offsetWidth;
+    var h = container.offsetHeight;
     var renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
     var scene = new THREE.Scene();
     var camera = new THREE.OrthographicCamera(w / -scale, w / scale, h / scale, h / -scale, 0.001, 100);
@@ -225,10 +227,11 @@ var pentagonal = function(container) {
     var light = new THREE.DirectionalLight(0xffffff, 1.0);
     light.position.set(3, -3, -3);
     scene.add(light);
-    container.appendChild(renderer.domElement);
+    $(renderer.domElement).addClass('pentagonal');
+    $(container).prepend(renderer.domElement);
     window.onresize = function () {
-      w = container.innerWidth;
-      h = container.innerHeight;
+      w = container.offsetWidth;
+      h = container.offsetHeight;
       renderer.clear();
       camera.left = w / -scale;
       camera.right = w / scale;
@@ -241,9 +244,10 @@ var pentagonal = function(container) {
       render();
     };
     animate();
+    setInterval(function(){
+      if (watchdog.getDelta() > 5){
+        animate();
+      }
+    });
   }
 };
-
-$(function(){
-  pentagonal($('.cover-image')[0]);
-});
