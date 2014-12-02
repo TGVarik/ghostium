@@ -10,7 +10,7 @@ module.exports = function(grunt) {
    * =============================
    */
 
-   /**
+  /**
    * Directories structure
    */
   var dirs = {
@@ -44,13 +44,13 @@ module.exports = function(grunt) {
      */
     tag: {
       banner: '/*!\n' +
-              ' * <%= pkg.name %>\n' +
-              ' * <%= pkg.description %>\n' +
-              ' * <%= pkg.url %>\n' +
-              ' * @author <%= pkg.author.name %> <%= pkg.author.url %>\n' +
-              ' * @version <%= pkg.version %>\n' +
-              ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
-              ' */\n'
+            ' * <%= pkg.name %>\n' +
+            ' * <%= pkg.description %>\n' +
+            ' * <%= pkg.url %>\n' +
+            ' * @author <%= pkg.author.name %> <%= pkg.author.url %>\n' +
+            ' * @version <%= pkg.version %>\n' +
+            ' * Copyright <%= pkg.copyright %>. <%= pkg.license %> licensed.\n' +
+            ' */\n'
     },
 
     /**
@@ -59,23 +59,34 @@ module.exports = function(grunt) {
     clean: {
       build: {
         files: [{
-          dot: true,
-          src: [
-            '.sass-cache',
-            '<%= dir.tmp %>',
-            'build'
-          ]
-        }]
+                  dot: true,
+                  src: [
+                    '.sass-cache',
+                    '<%= dir.tmp %>',
+                    'build'
+                  ]
+                }]
       },
       release: {
         files: [{
-          dot: true,
-          src: [
-            'assets',
-            'partials',
-            '*.hbs'
-          ]
-        }]
+                  dot: true,
+                  src: [
+                    'assets',
+                    'partials',
+                    '*.hbs'
+                  ]
+                }]
+      },
+      final:{
+        files:[{
+                 dot:true,
+                 src:[
+                   '*',
+                   '!assets',
+                   '!partials',
+                   '!*.hbs'
+                 ]
+               }]
       }
     },
 
@@ -182,11 +193,11 @@ module.exports = function(grunt) {
           report: 'gzip'
         },
         files: [{
-          expand: true,
-          cwd: '<%= dir.build %><%= dir.css %>',
-          src: '**/*.css',
-          dest: '<%= dir.build %><%= dir.css %>'
-        }]
+                  expand: true,
+                  cwd: '<%= dir.build %><%= dir.css %>',
+                  src: '**/*.css',
+                  dest: '<%= dir.build %><%= dir.css %>'
+                }]
       }
     },
 
@@ -200,11 +211,11 @@ module.exports = function(grunt) {
           progressive: true
         },
         files: [{
-          expand: true,
-          cwd: '<%= dir.build %><%= dir.images %>',
-          src: '**/*.{jpg,jpeg,png}',
-          dest: '<%= dir.build %><%= dir.images %>'
-        }]
+                  expand: true,
+                  cwd: '<%= dir.build %><%= dir.images %>',
+                  src: '**/*.{jpg,jpeg,png}',
+                  dest: '<%= dir.build %><%= dir.images %>'
+                }]
       }
     },
 
@@ -215,11 +226,11 @@ module.exports = function(grunt) {
     svgmin: {
       build: {
         files: [{
-          expand: true,
-          cwd: '<%= dir.build %><%= dir.images %>',
-          src: '**/*.svg',
-          dest: '<%= dir.build %><%= dir.images %>'
-        }]
+                  expand: true,
+                  cwd: '<%= dir.build %><%= dir.images %>',
+                  src: '**/*.svg',
+                  dest: '<%= dir.build %><%= dir.images %>'
+                }]
       }
     },
 
@@ -233,12 +244,12 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: [{
-          expand: true,
-          cwd: '<%= dir.src %><%= dir.sass %>',
-          src: '*.{sass,scss}',
-          dest: '<%= dir.tmp %><%= dir.css %>',
-          ext: '.css'
-        }]
+                  expand: true,
+                  cwd: '<%= dir.src %><%= dir.sass %>',
+                  src: '*.{sass,scss}',
+                  dest: '<%= dir.tmp %><%= dir.css %>',
+                  ext: '.css'
+                }]
       }
     },
 
@@ -254,7 +265,7 @@ module.exports = function(grunt) {
           'opera 12.1',
           'ios 6',
           'android 4',
-           '> 1%'
+          '> 1%'
         ]
       },
       build: {
@@ -275,8 +286,8 @@ module.exports = function(grunt) {
 
     usemin: {
       options: {
-          basedir: '<%= dir.build %>',
-          dirs: ['<%= dir.build %>/**/*']
+        basedir: '<%= dir.build %>',
+        dirs: ['<%= dir.build %>/**/*']
       },
       html: ['<%= dir.build %>/**/*.hbs']
     },
@@ -289,9 +300,9 @@ module.exports = function(grunt) {
         src: ['<%= dir.build %>/**/*.hbs'],
         overwrite: true,
         replacements: [{
-          from: /[\"\']\/assets\/(.*?)[\"\']/gi,
-          to: '"{{asset \'$1\'}}"'
-        }]
+                         from: /[\"\']\/assets\/(.*?)[\"\']/gi,
+                         to: '"{{asset \'$1\'}}"'
+                       }]
       }
     },
 
@@ -329,12 +340,12 @@ module.exports = function(grunt) {
       },
       release: {
         files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= dir.build %>',
-          src: ['**'],
-          dest: ''
-        }]
+                  expand: true,
+                  dot: true,
+                  cwd: '<%= dir.build %>',
+                  src: ['**'],
+                  dest: ''
+                }]
       }
     },
 
@@ -426,16 +437,16 @@ module.exports = function(grunt) {
    * Build, move builded files to root, bump and update changelog
    */
   grunt.registerTask(
-    'release',
-    'Build, move builded files to root, bump and update changelog',
-    function(versionType) {
-      grunt.task.run('push:' + (versionType || '') + ':bump-only');
-      grunt.task.run([
-        'dryrun',
-        'changelog'
-      ]);
-      grunt.task.run('push-commit');
-    }
+      'release',
+      'Build, move builded files to root, bump and update changelog',
+      function(versionType) {
+        grunt.task.run('push:' + (versionType || '') + ':bump-only');
+        grunt.task.run([
+          'dryrun',
+          'changelog'
+        ]);
+        grunt.task.run('push-commit');
+      }
   );
 
   /**
@@ -445,5 +456,10 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'build',
     'copy:release'
+  ]);
+
+  grunt.registerTask('buildwithghost',[
+    'default',
+    'clean:final'
   ]);
 };
