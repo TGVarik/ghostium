@@ -178,7 +178,7 @@ var pentagonal = function(container) {
       ph.rotation.y += 0.03 * delta;
       ph.rotation.z -= 0.02 * delta;
       ph.animate(delta);
-      render()
+      render();
     };
     var scale = 675;
     var clock = new THREE.Clock();

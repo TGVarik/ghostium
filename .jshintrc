@@ -18,6 +18,10 @@
   "globals": {
     "$": false,
     "jQuery": false,
-    "Modernizr": false
+    "Modernizr": false,
+    "THREE": false,
+    "Detector": true,
+    "pentagonal": true,
+    "requestAnimationFrame": false
   }
 }

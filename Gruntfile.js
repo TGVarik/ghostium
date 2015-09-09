@@ -190,8 +190,7 @@ module.exports = function(grunt) {
     csso: {
       build: {
         options: {
-          banner: '<%= tag.banner %>',
-          report: 'gzip'
+          banner: '<%= tag.banner %>'
         },
         files: [{
                   expand: true,
