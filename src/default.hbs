@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -29,7 +29,7 @@
   <link href="/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
 
   <link href="//fonts.googleapis.com/" rel="dns-prefetch">
-  <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400&subset=latin,latin-ext" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6710912/623586/css/fonts.css" />
 
   <!-- build:css({src,.tmp}) /assets/css/main.min.css -->
@@ -89,7 +89,7 @@
 <!-- build:js /assets/js/foot-scripts.min.js -->
 <script src="/assets/_components/fastclick/lib/fastclick.js"></script>
 
-<!-- PrismJS core, aditional languages and plugins -->
+    <!-- PrismJS core, additional languages and plugins -->
 <script src="/assets/_components/prism/prism.js"></script>
 <script src="/assets/_components/prism/components/prism-aspnet.js"></script>
 <script src="/assets/_components/prism/components/prism-bash.js"></script>
@@ -114,42 +114,39 @@
 <script src="/assets/_components/prism/plugins/autolinker/prism-autolinker.js"></script>
 <script src="/assets/_components/prism/plugins/line-numbers/prism-line-numbers.js"></script>
 
+    <!-- Other third-party scripts -->
+    <script src="/assets/_components/jquery-pjax/jquery.pjax.js"></script>
+    <script src="/assets/_components/reading-time/src/readingTime.js"></script>
+    <script src="/assets/_components/threejs/build/three.js"></script>
 
-<script src="/assets/_components/jquery-pjax/jquery.pjax.js"></script>
-<script src="/assets/js/drawer.js"></script>
-<script src="/assets/js/imageLoader.js"></script>
-<script src="/assets/js/scripts.js"></script>
-<script src="/assets/_components/threejs/build/three.js"></script>
-<script src="/assets/js/Detector.js"></script>
-<script src="/assets/js/pentagonal.js"></script>
+    <!-- Ghostium scripts -->
+    <script src="/assets/js/drawer.js"></script>
+    <script src="/assets/js/imageLoader.js"></script>
+    <script src="/assets/js/readTime.js"></script>
+    <script src="/assets/js/scripts.js"></script>
+    <script src="/assets/js/Detector.js"></script>
+    <script src="/assets/js/pentagonal.js"></script>
 <!-- endbuild -->
 
 <script type="text/javascript">
 
   if(GHOSTIUM.haveGA) {
-    (function (g, h, o, s, t, z) {
-      g.GoogleAnalyticsObject = s;
-      g[s] || (g[s] =
-               function () {(g[s].q = g[s].q || []).push(arguments)});
-      g[s].s = +new Date;
-      t = h.createElement(o);
-      z = h.getElementsByTagName(o)[0];
-      t.src = '//www.google-analytics.com/analytics.js';
-      z.parentNode.insertBefore(t, z)
-    }(window, document, 'script', 'ga'));
-    ga('create', ga_ua);
-    ga('send', 'pageview');
-  }
+        (function(g,h,o,s,t,z){g.GoogleAnalyticsObject=s;g[s]||(g[s]=
+        function(){(g[s].q=g[s].q||[]).push(arguments)});g[s].s=+new Date;
+        t=h.createElement(o);z=h.getElementsByTagName(o)[0];
+        t.src='//www.google-analytics.com/analytics.js';
+        z.parentNode.insertBefore(t,z)}(window,document,'script','ga'));
+        ga('create',ga_ua);ga('send','pageview');
+      }
 
-  if(GHOSTIUM.haveDisqus) {
-    (function () {
-      var s = document.createElement('script');
-      s.async = true;
-      s.type = 'text/javascript';
-      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-  }
+      if(GHOSTIUM.haveDisqus) {
+        (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+      }
 </script>
 {{! load and configure mathjax }}
 <script type="text/javascript">

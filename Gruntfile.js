@@ -67,6 +67,7 @@ module.exports = function(grunt) {
                   ]
                 }]
       },
+
       release: {
         files: [{
                   dot: true,
@@ -370,6 +371,13 @@ module.exports = function(grunt) {
       options: {
         github: 'oswaldoacauan/ghostium'
       }
+    },
+
+    watch: {
+      all: {
+        files: ['src/**/*.{js,hbs,scss}'],
+        tasks: ['dryrun']
+      }
     }
   });
 
@@ -455,11 +463,12 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('default', [
     'build',
-    'copy:release'
+    'report'
   ]);
 
   grunt.registerTask('buildwithghost',[
     'default',
+    'copy:release',
     'clean:final'
   ]);
 };

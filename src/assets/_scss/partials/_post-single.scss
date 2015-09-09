@@ -1,14 +1,100 @@
-.post {
-  @include breakpoint(small) {
-    padding-top: 30px;
-  }
-}
-
 .post-container {
   position: relative;
 }
 
+.post-meta-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 16.5px 20px 16.5px 75px;
+  color: rgba(white, .97);
+  font-size: 14px;
+  line-height: 32px;
+  text-shadow: 0 2px 15px rgba(black, .75);
+
+  a {
+    color: rgba(white, .97);
+    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .post-meta-bar-author {
+    position: relative;
+    padding-left: 40px;
+
+    img {
+      display: inline;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      margin-top: -16px;
+      border-radius: 16px;
+    }
+  }
+
+  .post-meta-bar__side {
+    border-left: 1px solid rgba(white, .35);
+    padding-left: 16px;
+
+    &.post-meta-bar__side--left {
+      float: left;
+    }
+
+    &.post-meta-bar__side--right {
+      float: right;
+      text-align: right;
+    }
+  }
+}
+
 .post-header {}
+
+.post-image {
+  background: {
+    color: #000;
+    position: 50% 50%;
+    size: cover;
+  }
+
+  display: table;
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  z-index: 1;
+
+  a, a:hover, a:focus, .post-meta-item {
+    color: white;
+  }
+
+  div {
+    display: table-cell;
+    height: 100%;
+    padding: 65px 20px;
+    text-shadow: 0 5px 20px rgba(black, .5);
+    vertical-align: bottom;
+
+    header {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  .fa-angle-down {
+    font-size: 32px;
+    margin: 64px auto 0;
+    color: rgba(255,255,255,0.75);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
 
 .post-meta-list {
   @extend .post-item-meta-list;
