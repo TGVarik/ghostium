@@ -50,6 +50,6 @@
   },
   "scripts": {
     "test": "grunt --verbose",
-    "postinstall": "bundle install && bower install && echo $PWD && grunt buildwithghost"
+    "postinstall": "bundle install && bower install && grunt buildwithghost"
   }
 }

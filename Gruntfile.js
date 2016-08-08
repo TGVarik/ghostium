@@ -389,7 +389,7 @@ module.exports = function(grunt) {
   /**
    * Dynamically load npm tasks
    */
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
 
   /**
    * TASKS
