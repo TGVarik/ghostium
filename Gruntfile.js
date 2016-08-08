@@ -467,7 +467,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('buildwithghost',[
-    'default',
+    'build',
     'copy:release',
     'clean:final'
   ]);
