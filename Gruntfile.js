@@ -85,7 +85,8 @@ module.exports = function(grunt) {
                    '*',
                    '!assets',
                    '!partials',
-                   '!*.hbs'
+                   '!*.hbs',
+                   '!package.json'
                  ]
                }]
       }
